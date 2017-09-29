@@ -1,12 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div style="text-align:center">
+        <h1>
+          Welcome to {{title}}!
+        </h1>
+      </div>
+      <ul>
+        <app-recepies></app-recepies>
+        <app-shopping-list></app-shopping-list>
+      </ul>
+    </div>
+  </div>
 </div>
-<ul>
-  <app-recepies></app-recepies>
-  <app-shopping-list></app-shopping-list>
-</ul>
-
