@@ -7,8 +7,13 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name : string =""
+  name: string = ""
   title = 'app';
+  featureSelected: string 
 
+  onNavigate(feature: string) {
+    this.featureSelected = feature
   }
+
+}
 
