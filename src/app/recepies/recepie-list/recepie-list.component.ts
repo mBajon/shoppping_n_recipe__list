@@ -8,7 +8,7 @@ import {Recipe} from '../recipe.model'
 })
 export class RecepieListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>()
-  recipies : Recipe[]=[new Recipe(' Best Burgers in Town','Burger and chips','http://ocdn.eu/pulscms-transforms/1/3WcktkpTURBXy83NDJlZDE0NjBkMTc1YzMwOWE5N2Y3MjYwNTRmNjJhMy5qcGeSlQMAAM0OQ80IBpMFzQNSzQHe'),new Recipe(' Best Burgers in Town','Burger and chips','http://ocdn.eu/pulscms-transforms/1/3WcktkpTURBXy83NDJlZDE0NjBkMTc1YzMwOWE5N2Y3MjYwNTRmNjJhMy5qcGeSlQMAAM0OQ80IBpMFzQNSzQHe')
+  recipes : Recipe[]=[new Recipe(' Best Burgers in Town','Burger and chips','http://ocdn.eu/pulscms-transforms/1/3WcktkpTURBXy83NDJlZDE0NjBkMTc1YzMwOWE5N2Y3MjYwNTRmNjJhMy5qcGeSlQMAAM0OQ80IBpMFzQNSzQHe'),new Recipe(' Best Burgers in Town','Burger and chips','http://ocdn.eu/pulscms-transforms/1/3WcktkpTURBXy83NDJlZDE0NjBkMTc1YzMwOWE5N2Y3MjYwNTRmNjJhMy5qcGeSlQMAAM0OQ80IBpMFzQNSzQHe')
 ]
   constructor() { }
 
