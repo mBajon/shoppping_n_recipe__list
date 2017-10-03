@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef, ViewChild,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 
-import {Ingredient} from '../../common/ingredient.model'
+import { Ingredient } from '../../common/ingredient.model'
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -16,11 +16,14 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddItem(){
-    const ingName=this.nameInputRef.nativeElement.value;
-    const ingAmount=this.amountInputRef.nativeElement.value;
-    const newIngredient = new Ingredient(ingName,ingAmount);
+  onAddItem() {
+    console.log("222")
+    const ingName = this.nameInputRef.nativeElement.value;
+    const ingAmount = this.amountInputRef.nativeElement.value;
+    const newIngredient = new Ingredient(ingName, ingAmount);
     this.ingredientAdded.emit(newIngredient);
   }
+
+  onDeleteItem(){console.log("222")}
 
 }
