@@ -10,6 +10,7 @@ import { RecepieDetailComponent } from './recepies/recepie-detail/recepie-detail
 import { RecepieItemComponent } from './recepies/recepie-list/recepie-item/recepie-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { TestDirectiveDirective } from './test-directive.directive';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     RecepieItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
+    TestDirectiveDirective,
   ],
   imports: [
     BrowserModule,
