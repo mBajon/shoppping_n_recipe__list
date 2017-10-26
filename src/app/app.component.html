@@ -1,20 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-header (featureSelected)="onNavigate($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div style="text-align:center">
-        <h1>
-          Welcome to {{title}}!
-        </h1>
-      </div>
-      <ul>
-        <app-recepies *ngIf="featureSelected =='recipe'"></app-recepies>
-      </ul>
-      <ul>
-        <app-shopping-list *ngIf="featureSelected !='recipe'"></app-shopping-list>
-
-      </ul>
+        <router-outlet></router-outlet>
     </div>
   </div>
 </div>
