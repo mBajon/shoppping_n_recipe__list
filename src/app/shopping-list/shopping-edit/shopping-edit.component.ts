@@ -1,29 +1,62 @@
-import { Component, OnInit, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
-
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgModel} from '@angular/forms'
 import { Ingredient } from '../../common/ingredient.model'
 import { ShoppingListService } from '../shopping-list.service'
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit {
-  @ViewChild('nameInput') nameInputRef: ElementRef
-  @ViewChild('amountInput') amountInputRef: ElementRef
+export class ShoppingEditComponent implements OnInit, OnDestroy {
+
+  subscription : Subscription
+  editMode=false
+  editItemIndex:number
+  editedIngredient: Ingredient
+  @ViewChild('f') slForm: NgForm
 
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
+
+    this.subscription=this.shoppingListService.startedEditing.subscribe((index)=>{
+      this.editMode=true
+      this.editItemIndex=index
+      this.editedIngredient=this.shoppingListService.getIngredient(index)
+      this.slForm.setValue({
+        name:this.editedIngredient.name,
+        amount: this.editedIngredient.amount
+      })
+    })
   }
 
-  onAddItem() {
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
+  }
+
+  onAddItem(form: NgForm) {
     console.log("222")
-    const ingName = this.nameInputRef.nativeElement.value;
-    const ingAmount = this.amountInputRef.nativeElement.value;
-    const newIngredient = new Ingredient(ingName, ingAmount);
+    const value = form.value
+    const newIngredient = new Ingredient(value.name, value.amount);
+    if (this.editMode){
+      this.shoppingListService.updateIngredient(this.editItemIndex,newIngredient)
+    } else {
     this.shoppingListService.addIngredient(newIngredient)
   }
+  this.editMode=false
+  form.reset()
+  }
 
-  onDeleteItem() { console.log("222") }
+  onClear(){
+    this.slForm.reset()
+    this.editMode=false
+  }
+
+  onDeleteItem() {
+    this.shoppingListService.deleteIngredient(this.editItemIndex) 
+    this.onClear()
+   }
 
 }
